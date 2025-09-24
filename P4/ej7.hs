@@ -1,5 +1,3 @@
-import Language.Haskell.TH.PprLib (cat)
-
 {-
 Implementar la funcion iesimoDigito :: Integer ->Integer ->Integer que dado un n ∈ Z mayor o igual a 0 y un i ∈ Z mayor o igual a 1 y menor o igual a la cantidad de digitos de n, devuelve el i-esimo digito de n.
 
