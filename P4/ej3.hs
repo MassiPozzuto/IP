@@ -2,7 +2,7 @@
 
 {-
     problema esDivisible (x: Z, y:Z): Bool {
-        requiere: { y /= 0}
+        requiere: { y > 0}
         asegura: { res = x es divisible por y }
     }
 
@@ -32,3 +32,5 @@ esDivisible' 0 _ = True
 esDivisible' x y
   | x < 0 = False
   | otherwise = esDivisible' (x - abs y) y
+
+-- El abs no hace falta ya que la especificacion pide numero naturales, pero no me importa
