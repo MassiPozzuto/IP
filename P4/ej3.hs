@@ -23,3 +23,12 @@ esMultiplo x y 0 = False
 esMultiplo x y i
   | x == i * y = True
   | otherwise = esMultiplo x y (i - 1)
+
+-- Forma de Mati (un poco modificada)
+
+esDivisible' :: Integer -> Integer -> Bool
+esDivisible' _ 0 = False
+esDivisible' 0 _ = True
+esDivisible' x y
+  | x < 0 = False
+  | otherwise = esDivisible' (x - abs y) y
