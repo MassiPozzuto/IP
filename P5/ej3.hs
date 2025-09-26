@@ -33,7 +33,7 @@ maximo (x:y:xs)
 -}
 sumarN :: Integer -> [Integer] -> [Integer]
 sumarN _ [] = []
-sumarN n (x:xs) = (x + n) : (sumarN n xs)
+sumarN n (x:xs) = (x + n) : sumarN n xs
 
 -- 5. sumarElPrimero :: [Integer] -> [Integer] segun la siguiente especificacion:
 {-

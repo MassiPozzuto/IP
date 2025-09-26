@@ -6,7 +6,7 @@
 sumaAcumulada :: (Num t) => [t] -> [t]
 sumaAcumulada [] = []
 sumaAcumulada [x] = [x]
-sumaAcumulada (x:y:xs) = [x] ++ sumaAcumulada((x+y):xs)
+sumaAcumulada (x:y:xs) = x : sumaAcumulada((x+y):xs)
 
 
 -- 2. descomponerEnPrimos :: [Integer] -> [[Integer]] segun la siguiente especificacion:
@@ -29,7 +29,7 @@ factorizarNum :: Integer -> Integer -> [Integer]
 factorizarNum 1 1 = []
 factorizarNum n i
     | i > n = []
-    | mod n (nEsimoPrimo i) == 0 = (nEsimoPrimo i) : factorizarNum (div n (nEsimoPrimo i)) 1
+    | mod n (nEsimoPrimo i) == 0 = nEsimoPrimo i : factorizarNum (div n (nEsimoPrimo i)) 1
     | otherwise = factorizarNum n (i+1)
 
 -- En la segunda guara: Si n es divisible por el nEsimoPrimo, entonces lo agrego a la lista y vuelvo a realizar la funcion para la division entre el numero y el primo

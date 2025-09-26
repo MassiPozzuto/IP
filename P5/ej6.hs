@@ -20,7 +20,7 @@ agregarContacto :: Contacto -> ContactosTel -> ContactosTel
 agregarContacto (nomNuevo, telNuevo) [] = [(nomNuevo, telNuevo)]
 agregarContacto (nomNuevo, telNuevo) ((nomPrimerContacto, telPrimerContacto): otrosContactos)
     | nomNuevo == nomPrimerContacto = nuevoContacto : otrosContactos
-    | otherwise = primerContacto : (agregarContacto nuevoContacto otrosContactos)
+    | otherwise = primerContacto : agregarContacto nuevoContacto otrosContactos
     where 
         primerContacto = (nomPrimerContacto, telPrimerContacto) 
         nuevoContacto = (nomNuevo, telNuevo)
