@@ -34,3 +34,37 @@ quitarHasta str 0 = str
 quitarHasta (fstLetter : otherLetters) i = quitarHasta otherLetters (i - 1)
 
 -- d) palabraMasLarga :: [Char] -> [Char], que dada una lista de caracteres devuelve su palabra mas larga.
+palabraMasLarga :: [Char] -> [Char]
+palabraMasLarga xs = elementoMasLargo (palabras xs)
+
+elementoMasLargo :: (Eq t) => [[t]] -> [t]
+elementoMasLargo [] = []
+elementoMasLargo [x] = x
+elementoMasLargo (x:y:xs) 
+    | length x >= length y = elementoMasLargo (x:xs) 
+    | otherwise = elementoMasLargo (y:xs) 
+
+-- e) aplanar :: [[Char]] -> [Char], que a partir de una lista de palabras arma una lista de caracteres concatenandolas.
+aplanar :: [[Char]] -> [Char]
+aplanar [] = []
+aplanar [x] = x
+aplanar (x:xs) = x ++ aplanar xs
+
+-- f ) aplanarConBlancos :: [[Char]] -> [Char], que a partir de una lista de palabras, arma una lista de caracteres concatenandolas e insertando un blanco entre cada palabra.
+aplanarConBlancos :: [[Char]] -> [Char]
+aplanarConBlancos [] = []
+aplanarConBlancos [x] = x
+aplanarConBlancos (x:xs) = x ++ [' '] ++ aplanarConBlancos xs
+
+-- g) aplanarConNBlancos :: [[Char]] -> Integer -> [Char], que a partir de una lista de palabras y un entero n, arma una lista de caracteres concatenandolas e insertando n blancos entre cada palabra (n debe ser no negativo)
+aplanarConNBlancos :: [[Char]] -> Integer -> [Char]
+aplanarConNBlancos [] _ = []
+aplanarConNBlancos [x] _ = x
+aplanarConNBlancos (x:xs) n = x ++ nBlancos n ++ aplanarConNBlancos xs n
+
+nBlancos :: Integer -> [Char]
+nBlancos 0 = []
+nBlancos n = ' ' : nBlancos (abs n - 1)
+
+-- 2) ¿Como cambian los ejercicios si agregamos el renombre de tipos: type Texto = [Char]?
+-- Imaginatelo compa, es lo mismo usar Texto a usar String, saludos.
