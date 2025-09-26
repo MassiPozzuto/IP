@@ -6,8 +6,7 @@
 sumaAcumulada :: (Num t) => [t] -> [t]
 sumaAcumulada [] = []
 sumaAcumulada [x] = [x]
-sumaAcumulada (x:y:xs) = x : sumaAcumulada((x+y):xs)
-
+sumaAcumulada (x : y : xs) = x : sumaAcumulada ((x + y) : xs)
 
 -- 2. descomponerEnPrimos :: [Integer] -> [[Integer]] segun la siguiente especificacion:
 
@@ -21,23 +20,23 @@ sumaAcumulada (x:y:xs) = x : sumaAcumulada((x+y):xs)
 Por ejemplo descomponerEnPrimos [2, 10, 6] es [[2], [2, 5], [2, 3]].
 -}
 
-descomponerEnPrimos :: [Integer] -> [[Integer]] 
+descomponerEnPrimos :: [Integer] -> [[Integer]]
 descomponerEnPrimos [] = []
-descomponerEnPrimos (x:xs) = factorizarNum x 1 : descomponerEnPrimos xs
+descomponerEnPrimos (x : xs) = factorizarNum x 1 : descomponerEnPrimos xs
 
 factorizarNum :: Integer -> Integer -> [Integer]
 factorizarNum 1 1 = []
 factorizarNum n i
-    | i > n = []
-    | mod n (nEsimoPrimo i) == 0 = nEsimoPrimo i : factorizarNum (div n (nEsimoPrimo i)) 1
-    | otherwise = factorizarNum n (i+1)
+  | i > n = []
+  | mod n (nEsimoPrimo i) == 0 = nEsimoPrimo i : factorizarNum (div n (nEsimoPrimo i)) 1
+  | otherwise = factorizarNum n (i + 1)
 
 -- En la segunda guara: Si n es divisible por el nEsimoPrimo, entonces lo agrego a la lista y vuelvo a realizar la funcion para la division entre el numero y el primo
 -- Ej: factorizarNum 4 1  ==>  2 : factorizarNum 2 1  ==>  2 : 2 : factorizarNum 1 1  ==>  2 : 2 : []  ==>  [2,2]
 
 -- Ej: factorizarNum 10 1  ==>  2 : factorizarNum 5 1  ==>  2 : factorizarNum 5 2  ==>  2 : factorizarNum 5 3  ==>  2 : 5 : factorizarNum 1 1 ==>  2 : 5 : []  ==>  [2,5]
 
------- Todas funciones del ejercicio 16 de la practica 4 ------ 
+------ Todas funciones del ejercicio 16 de la practica 4 ------
 nEsimoPrimo :: Integer -> Integer
 nEsimoPrimo 1 = 2
 nEsimoPrimo n = proximoPrimo (nEsimoPrimo (n - 1))
@@ -59,4 +58,5 @@ divisorMayorMasCercano 1 i = 1
 divisorMayorMasCercano n i
   | (i > 1) && (mod n i == 0) = i
   | otherwise = divisorMayorMasCercano n (i + 1)
+
 ---------------------------------------------------------------

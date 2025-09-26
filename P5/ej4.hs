@@ -40,27 +40,27 @@ palabraMasLarga xs = elementoMasLargo (palabras xs)
 elementoMasLargo :: (Eq t) => [[t]] -> [t]
 elementoMasLargo [] = []
 elementoMasLargo [x] = x
-elementoMasLargo (x:y:xs) 
-    | length x >= length y = elementoMasLargo (x:xs) 
-    | otherwise = elementoMasLargo (y:xs) 
+elementoMasLargo (x : y : xs)
+  | length x >= length y = elementoMasLargo (x : xs)
+  | otherwise = elementoMasLargo (y : xs)
 
 -- e) aplanar :: [[Char]] -> [Char], que a partir de una lista de palabras arma una lista de caracteres concatenandolas.
 aplanar :: [[Char]] -> [Char]
 aplanar [] = []
 aplanar [x] = x
-aplanar (x:xs) = x ++ aplanar xs
+aplanar (x : xs) = x ++ aplanar xs
 
 -- f ) aplanarConBlancos :: [[Char]] -> [Char], que a partir de una lista de palabras, arma una lista de caracteres concatenandolas e insertando un blanco entre cada palabra.
 aplanarConBlancos :: [[Char]] -> [Char]
 aplanarConBlancos [] = []
 aplanarConBlancos [x] = x
-aplanarConBlancos (x:xs) = x ++ [' '] ++ aplanarConBlancos xs
+aplanarConBlancos (x : xs) = x ++ [' '] ++ aplanarConBlancos xs
 
 -- g) aplanarConNBlancos :: [[Char]] -> Integer -> [Char], que a partir de una lista de palabras y un entero n, arma una lista de caracteres concatenandolas e insertando n blancos entre cada palabra (n debe ser no negativo)
 aplanarConNBlancos :: [[Char]] -> Integer -> [Char]
 aplanarConNBlancos [] _ = []
 aplanarConNBlancos [x] _ = x
-aplanarConNBlancos (x:xs) n = x ++ nBlancos n ++ aplanarConNBlancos xs n
+aplanarConNBlancos (x : xs) n = x ++ nBlancos n ++ aplanarConNBlancos xs n
 
 nBlancos :: Integer -> [Char]
 nBlancos 0 = []

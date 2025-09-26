@@ -3,7 +3,7 @@
 -- 1. sumatoria :: [Integer] -> Integer segun la siguiente especificacion: (Ver en el apunte)
 sumatoria :: [Integer] -> Integer
 sumatoria [] = 0
-sumatoria (x:xs) = x + sumatoria xs
+sumatoria (x : xs) = x + sumatoria xs
 
 -- 2. productoria :: [Integer] -> Integer segun la siguiente especificacion: (Ver en el apunte)
 productoria :: [Integer] -> Integer
@@ -20,9 +20,9 @@ productoria (x : xs) = x * productoria xs
 
 maximo :: [Integer] -> Integer
 maximo [x] = x
-maximo (x:y:xs)
-    | x >= y = maximo (x:xs)
-    | otherwise = maximo (y:xs)
+maximo (x : y : xs)
+  | x >= y = maximo (x : xs)
+  | otherwise = maximo (y : xs)
 
 -- 4. sumarN :: Integer -> [Integer] -> [Integer] segun la siguiente especificacion:
 {-
@@ -33,7 +33,7 @@ maximo (x:y:xs)
 -}
 sumarN :: Integer -> [Integer] -> [Integer]
 sumarN _ [] = []
-sumarN n (x:xs) = (x + n) : sumarN n xs
+sumarN n (x : xs) = (x + n) : sumarN n xs
 
 -- 5. sumarElPrimero :: [Integer] -> [Integer] segun la siguiente especificacion:
 {-
@@ -45,7 +45,7 @@ sumarN n (x:xs) = (x + n) : sumarN n xs
 Por ejemplo sumarElPrimero [1,2,3] da [2,3,4]
 -}
 sumarElPrimero :: [Integer] -> [Integer]
-sumarElPrimero (x:xs) = sumarN x (x:xs) 
+sumarElPrimero (x : xs) = sumarN x (x : xs)
 
 -- 6. sumarElUltimo :: [Integer] -> [Integer] segun la siguiente especificacion:
 {-
@@ -60,7 +60,7 @@ sumarElUltimo lista = sumarN (ultimoElemento lista) lista
 
 ultimoElemento :: [t] -> t
 ultimoElemento [x] = x
-ultimoElemento (x:xs) = ultimoElemento xs
+ultimoElemento (x : xs) = ultimoElemento xs
 
 -- 7. pares :: [Integer] -> [Integer] segun la siguiente especificacion:
 {-
@@ -72,26 +72,27 @@ Por ejemplo pares [1,2,3,5,8,2] da [2,8,2]
 -}
 pares :: [Integer] -> [Integer]
 pares [] = []
-pares (x:xs)
-    | mod x 2 == 0 = x : pares xs
-    | otherwise = pares xs
+pares (x : xs)
+  | mod x 2 == 0 = x : pares xs
+  | otherwise = pares xs
 
 -- 8. multiplosDeN :: Integer -> [Integer] -> [Integer] que dado un numero n y una lista xs, devuelve una lista con los elementos de xs multiplos de n.
 multiplosDeN :: Integer -> [Integer] -> [Integer]
 multiplosDeN _ [] = []
-multiplosDeN n (x:xs)
-    | mod x n == 0 = x : multiplosDeN n xs
-    | otherwise = multiplosDeN n xs
+multiplosDeN n (x : xs)
+  | mod x n == 0 = x : multiplosDeN n xs
+  | otherwise = multiplosDeN n xs
 
 -- 9. ordenar :: [Integer] -> [Integer] que ordena los elementos de la lista en forma creciente. Sugerencia: Pensar como pueden usar la funcion maximo para que ayude a generar la lista ordenada necesaria.
 
 ordenar :: [Integer] -> [Integer]
 ordenar [] = []
 ordenar lst = ordenar listaSinSuMax ++ [maximo lst]
-    where listaSinSuMax = quitar (maximo lst) lst
+  where
+    listaSinSuMax = quitar (maximo lst) lst
 
 quitar :: (Eq t) => t -> [t] -> [t]
 quitar e [] = []
-quitar e (x:xs) 
-    | e == x = xs
-    | otherwise = x : quitar e xs
+quitar e (x : xs)
+  | e == x = xs
+  | otherwise = x : quitar e xs
