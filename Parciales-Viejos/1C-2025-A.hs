@@ -114,9 +114,8 @@ sumaIesimaColumna [] _ = 0
 sumaIesimaColumna (fila : otrasFilas) col = iesimoElemento fila (col - 1) + sumaIesimaColumna otrasFilas col
 
 iesimoElemento :: [Integer] -> Integer -> Integer
-iesimoElemento (el : otrosEl) i
-  | i == 0 = el
-  | otherwise = iesimoElemento otrosEl (i - 1)
+iesimoElemento (el : otrosEl) 0 = el
+iesimoElemento (el : otrosEl) i = iesimoElemento otrosEl (i - 1)
 
 {--
 \* Ejercicio 5
