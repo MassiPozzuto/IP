@@ -25,7 +25,10 @@ unificarTablero (fila : otrasFilas) = fila ++ unificarTablero otrasFilas
 
 organizarRepeticionesPorElemento :: Fila -> [(Int, Int)]
 organizarRepeticionesPorElemento [] = []
-organizarRepeticionesPorElemento (primerEl : otrosEl) = (primerEl, cantApariciones primerEl (primerEl : otrosEl)) : organizarRepeticionesPorElemento (quitar primerEl otrosEl)
+organizarRepeticionesPorElemento (primerEl : otrosEl) = (primerEl, cantAparicionesDelPrimerEl) : organizarRepeticionesParaLosDemasEl
+  where
+    cantAparicionesDelPrimerEl = cantApariciones primerEl (primerEl : otrosEl)
+    organizarRepeticionesParaLosDemasEl = organizarRepeticionesPorElemento (quitar primerEl otrosEl)
 
 quitar :: (Eq t) => t -> [t] -> [t]
 quitar _ [] = []
