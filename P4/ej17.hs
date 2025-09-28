@@ -10,14 +10,13 @@ Implementar la funcion esFibonacci :: Integer ->Bool segun la siguiente especifi
 -}
 
 esFibonacci :: Integer -> Bool
-esFibonacci n = estaEnFib n 1
+esFibonacci n = estaEnFib n 0
 
 estaEnFib :: Integer -> Integer -> Bool
-estaEnFib n i 
-    | n < 4 = True
-    | i > n = False
-    | n == fibonacci i = True
-    | otherwise = estaEnFib n (i+1)
+estaEnFib n i
+  | fibonacci i > n = False
+  | fibonacci i == n = True
+  | otherwise = estaEnFib n (i + 1)
 
 fibonacci :: Integer -> Integer
 fibonacci 0 = 0
