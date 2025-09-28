@@ -11,6 +11,7 @@ Por cuestiones de tiempos de ejecucion, no les recomendamos que prueben este eje
 losPrimerosNPerfectos :: Int -> [Int]
 losPrimerosNPerfectos n = losPrimerosNPerfectosAux n 1 []
 
+--- Se que la funcion length no se puede usar en el parcial, pero es una funcion muy pelotuda para hacerla a parte
 losPrimerosNPerfectosAux :: Int -> Int -> [Int] -> [Int]
 losPrimerosNPerfectosAux n i actualesNumPerfectos
   | length actualesNumPerfectos == n = actualesNumPerfectos
