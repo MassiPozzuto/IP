@@ -58,11 +58,19 @@ type Cuatrimestre = Integer
 
 type CursadaAprobada = (Materia, Anio, Cuatrimestre)
 
-cursadasVencidas :: [CursadaAprobada] -> [Materia]
+cursadasVencidas :: [CursadaAprobada] -> [String]
 cursadasVencidas [] = []
 cursadasVencidas ((materia, anio, cuatri) : otrasCursadas)
-  | (anio == 2021 && cuatri <= 1) || anio < 2021 = materia : cursadasVencidas otrasCursadas
-  | otherwise = cursadasVencidas otrasCursadas
+  | (anio == 2021 && cuatri <= 1) || anio < 2021 = materia : cursadasVencidas otrasCursadasSinLaActual
+  | otherwise = cursadasVencidas otrasCursadasSinLaActual
+  where
+    otrasCursadasSinLaActual = quitarCursada materia otrasCursadas
+
+quitarCursada :: String -> [CursadaAprobada] -> [CursadaAprobada]
+quitarCursada _ [] = []
+quitarCursada materiaAQuitar ((materia, anio, cuatri) : otrasCursadas)
+  | materiaAQuitar == materia = quitarCursada materiaAQuitar otrasCursadas
+  | otherwise = (materia, anio, cuatri) : quitarCursada materiaAQuitar otrasCursadas
 
 {-
 Ejercicio 3 (2 puntos)
