@@ -97,14 +97,21 @@ EJERCICIO 4 (3 puntos)
 
 --}
 similAnagrama :: String -> String -> Bool
-similAnagrama (x : xs) palabra2 = similAnagramaAux (x : xs) palabra2 1
+similAnagrama palabra1 palabra2 = similAnagramaAux palabra1 palabra2 1
 
-similAnagramaAux :: (Eq t, Num t) => [Char] -> String -> t -> Bool
+similAnagramaAux :: String -> String -> Integer -> Bool
 similAnagramaAux [] _ _ = True
+similAnagramaAux (' ' : xs) palabra2 i = similAnagramaAux xs palabra2 i
 similAnagramaAux (x : xs) palabra2 i
   | i == 1 && estaIncluidaExactamenteIgual (x : xs) palabra2 = False
   | cantApariciones x (x : xs) /= cantApariciones x palabra2 = False
-  | otherwise = similAnagramaAux xs palabra2 (i + 1)
+  | otherwise = similAnagramaAux xs (quitarPrimerAparicion x palabra2) (i + 1)
+
+quitarPrimerAparicion :: (Eq t) => t -> [t] -> [t]
+quitarPrimerAparicion _ [] = []
+quitarPrimerAparicion el (x : xs)
+  | el == x = xs
+  | otherwise = x : quitarPrimerAparicion el xs
 
 estaIncluidaExactamenteIgual :: String -> String -> Bool
 estaIncluidaExactamenteIgual _ [] = False
