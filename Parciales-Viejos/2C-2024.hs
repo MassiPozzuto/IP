@@ -97,11 +97,15 @@ EJERCICIO 4 (3 puntos)
 
 --}
 similAnagrama :: String -> String -> Bool
-similAnagrama palabra1 palabra2 = similAnagramaAux palabra1 palabra2 1
+similAnagrama palabra1 palabra2 = similAnagramaAux (quitarBlancos palabra1) (quitarBlancos palabra2) 1
+
+quitarBlancos :: String -> String
+quitarBlancos [] = []
+quitarBlancos (' ' : xs) = quitarBlancos xs
+quitarBlancos (x : xs) = x : quitarBlancos xs
 
 similAnagramaAux :: String -> String -> Integer -> Bool
 similAnagramaAux [] _ _ = True
-similAnagramaAux (' ' : xs) palabra2 i = similAnagramaAux xs palabra2 i -- No cuento los blancos
 similAnagramaAux (x : xs) palabra2 i
   | i == 1 && estaIncluidaExactamenteIgual (x : xs) palabra2 = False
   | cantApariciones x (x : xs) /= cantApariciones x palabra2 = False
