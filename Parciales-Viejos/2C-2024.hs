@@ -125,15 +125,6 @@ cantApariciones el (x : xs)
   | el == x = 1 + cantApariciones el xs
   | otherwise = cantApariciones el xs
 
-posicion :: (Eq t) => t -> [t] -> Integer
-posicion el lst = posicionAux el lst 0
-
-posicionAux :: (Eq t) => t -> [t] -> Integer -> Integer
-posicionAux _ [] _ = -1
-posicionAux el (x : xs) i
-  | el == x = i
-  | otherwise = posicionAux el xs (i + 1)
-
 {--
 EJERCICIO 5 (1 punto)
 
