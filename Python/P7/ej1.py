@@ -213,6 +213,31 @@ def vocales_distintas(palabra:str) -> bool:
         asegura: { (res = i) ↔ (existe i, j ∈ Z tal que (0 ≤ i, j < (|s| - 1)) y i ≤ j y (para todo k tal que i ≤ k < j → s[k] ≤ s[k + 1]) y j-i+1 es máximo e i es el mínimo valor que lo cumple) }
     }
 """
+def pos_secuencia_ordenada_mas_larga(lista:list[int]) -> int:
+    lista_secuencias_ordenadas_pos:list[list[int]] = extraer_secuencias_ordenadas_pos(lista)
+    lista_mas_larga:list[int] = lista_secuencias_ordenadas_pos[0]
+
+    for sub_lista in lista_secuencias_ordenadas_pos:
+        if len(sub_lista) > len(lista_mas_larga):
+            lista_mas_larga = sub_lista
+    
+    return lista_mas_larga[0]
+
+def extraer_secuencias_ordenadas_pos(lista:list[int]) -> list[list[int]]:
+    res:list[list[int]] = []
+    lista_pos_aux:list[int] = [0]
+
+    for i in range(len(lista) - 1):
+        if len(lista_pos_aux) == 0: lista_pos_aux.append(i)
+        if lista[i] <= lista[i+1]:
+            lista_pos_aux.append(i+1)
+        else:
+            res.append(lista_pos_aux.copy())
+            if i == len(lista) - 2: res.append([i+1])
+            lista_pos_aux.clear()
+
+    if len(lista_pos_aux) != 0: res.append(lista_pos_aux.copy())
+    return res
 
 """
 14. Cantidad de dígitos impares.
