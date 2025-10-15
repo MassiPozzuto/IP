@@ -140,7 +140,10 @@ Opción 2:
 # La opcion 2: Genera una matriz de d*d con valores int random entre i y f
 # Ambas matrices son matrices de arrays no de listas
 def exponenciacion_matriz_random(d:int, p:int) -> list[list[int]]:
-    matriz_original:list[list[int]] = np.random.randint(0,100, (d, d)).tolist() # Estoy limitando los numeros random arbitrariamente a estar entre 0 y 100
+    # Estoy limitando los numeros random arbitrariamente a estar entre 0 y 100
+    # el tolist() es por un tema visual de los numeros
+    matriz_original:list[list[int]] = np.random.randint(0,100, (d, d)).tolist() 
+    
     matriz_exponenciada:list[list[int]] = exponenciacion_matriz(matriz_original, p)
     return matriz_exponenciada
 
