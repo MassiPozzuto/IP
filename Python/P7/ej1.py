@@ -106,7 +106,7 @@ def minimo(lista:list[int]) -> int:
 def ordenados (lista:list[int]) -> bool :
     res:bool = True
     for i in range(len(lista) - 1):
-        if lista[i] > lista[i+1]:
+        if lista[i] >= lista[i+1]:
             res = False
             break
     return res
