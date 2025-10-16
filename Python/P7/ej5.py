@@ -24,12 +24,11 @@ def pertenece_a_cada_uno_version1(matriz:list[list[int]], el:int) -> list[bool]:
         asegura: { Para todo i ∈ Z si 0 ≤ i < |s| → (res[i] = true ↔ pertenece(s[i], e)) }
     }
 """
-def pertenece_a_cada_uno_version2(matriz:list[list[int]], el:int) -> list[bool]:
-    res:list[bool] = []
+def pertenece_a_cada_uno_version2(matriz:list[list[int]], el:int, res:list[bool]) -> None:
+    res.clear()
     for i in range(len(matriz)):
         res.append(i)
         res[i] = el in matriz[i]    # En vez de usar pertenece uso in
-    return res
 
 """
 3. 
@@ -59,7 +58,7 @@ Rta:
     El segundo asegura coincide en ambos y dice: { Para todo i ∈ Z si 0 ≤ i < |s| → (res[i] = true ↔ pertenece(s[i], e)) }
     Entonces, ambas versiones van a coincidir en los indices de s, pero el res de la v1, podria tener mas indices agregados, los cuales seguirian respetando la especificacion
 
-    De la v2 a la v3 el parametro out res: seq⟨Bool⟩ no aparece, sin embargo, este aparece como lo que devuelve el problema, lo cual son distintas formas de decir lo mismo.
+    Entre la v2 y v3 la diferencia esta en que la v2 tiene el parametro entrada "out res:list[bool]" y no devuelve nada. Mientras que la v3 no tiene dicho parametro y devuelve list[bool]. Si bien las dos terminan haciendo lo mismo, la 2 lo hace pisando un parametro pasado por referencia, en cambio, la v3 crea uno y lo devuelve.
 
     Por lo tanto, v2 → v3 y v3 → v2 son tautologias. Ademas, v2 o v3 → v1, pero no vale que v1 → v2 ni v3.
     Por ejemplo: si tenemos s=[[1,2,3],[4,5,6],[7,8,9]] y e=1. 
