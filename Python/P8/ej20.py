@@ -21,10 +21,25 @@ def agrupar_por_longitud(nombre_archivo:str) -> dict[int, int]:
     lineas:list[str] = archivo.readlines()
     archivo.close()
     for linea in lineas:
-        palabras:list[str] = linea.split() # Uso split() que es de python, pero ya hice una funcion que funciona practicamente igual
+        palabras:list[str] = separar_palabras(linea) # Podria usar .split() que es de python
         for palabra in palabras:
             if not res.get(len(palabra)):
                 res[len(palabra)] = 0
             res[len(palabra)] += 1
 
+    return res
+
+def separar_palabras(string:str) -> list[str]:
+    res:list[str] = []
+
+    palabra_actual:str = ""
+    for letra in string:
+        if letra not in  [" ", "\n", ".", ",", ";", ":", '"', "'", "¡", "!", "¿", "?", "(", ")", "[", "]", "{", "}", ">", "<"]:
+            palabra_actual += letra
+        elif palabra_actual != "":
+            res.append(palabra_actual)
+            palabra_actual = ""
+    
+    if palabra_actual != "": 
+        res.append(palabra_actual)
     return res
