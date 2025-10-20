@@ -40,17 +40,23 @@ def cantidad_de_apariciones(nombre_archivo:str, palabra_buscada:str) -> int:
     res:bool = 0
     archivo = open(nombre_archivo, "r", encoding="utf8")
 
-    apariciones:dict[str, int] = {}
     lineas:list[str] = archivo.readlines()
     archivo.close()
-    for linea in lineas:
-        palabras:list[str] = linea.split() # Uso split() que es de python, pero ya hice una funcion que funciona practicamente igual
-        for palabra in palabras:
-            if not apariciones.get(palabra):
-                apariciones[palabra] = 0
-            apariciones[palabra] += 1
+
+    apariciones:dict[str, int] = cantidad_de_apariciones_lista(lineas)
     
-    if apariciones.get(palabra_buscada): 
+    if palabra_buscada in apariciones.keys(): 
         res = apariciones[palabra_buscada]
 
     return res
+
+def cantidad_de_apariciones_lista(string: list[str]) -> dict[str, int]:
+    apariciones:dict[str, int] = {}
+    for linea in string:
+        palabras:list[str] = linea.split() # Uso split() que es de python, pero ya hice una funcion que funciona practicamente igual
+        for palabra in palabras:
+            if palabra not in apariciones.keys():
+                apariciones[palabra] = 0
+            apariciones[palabra] += 1
+
+    return apariciones

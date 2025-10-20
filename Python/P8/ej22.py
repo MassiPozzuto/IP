@@ -22,6 +22,12 @@ def clonar_sin_comentarios(nombre_archivo_entrada:str, nombre_archivo_salida:str
     archivo_salida = open(nombre_archivo_salida, "w", encoding="utf8")
     archivo_salida.truncate()
     for linea in lineas:
-        if linea.strip()[0] != '#': archivo_salida.write(linea) # strip() es para sacar los espacios del principio y del final
+        if primer_caracter(linea) != '#': archivo_salida.write(linea)
     
     archivo_salida.close()
+
+def primer_caracter(string: str) -> str:
+    for letra in string:
+        if letra != " " and letra != "\t":
+            return letra
+    return ""

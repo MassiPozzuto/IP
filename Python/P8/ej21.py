@@ -7,18 +7,14 @@ Implementar una solución para el siguiente problema.
     }
 Para resolver el problema se aconseja utilizar un diccionario de palabras.
 """
+from ej19 import cantidad_de_apariciones_lista
+
 def la_palabra_mas_frecuente(nombre_archivo:str) -> str:
     archivo = open(nombre_archivo, "r", encoding="utf8")
 
-    apariciones:dict[str, int] = {}
     lineas:list[str] = archivo.readlines()
     archivo.close()
-    for linea in lineas:
-        palabras:list[str] = linea.split() # Uso split() que es de python, pero ya hice una funcion que funciona practicamente igual
-        for palabra in palabras:
-            if not apariciones.get(palabra):
-                apariciones[palabra] = 0
-            apariciones[palabra] += 1
+    apariciones:dict[str, int] = cantidad_de_apariciones_lista(lineas)
 
     palabra_mas_frecuente:str = list(apariciones.items())[1]
     for palabra, cant_apariciones in apariciones.items():
