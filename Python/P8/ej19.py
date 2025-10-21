@@ -1,4 +1,5 @@
 #Implementar una solución para cada uno de los siguientes problemas.
+from typing import TextIO
 """
 1. 
     problema contar_lineas (in nombre_archivo: seq⟨Char⟩) : Z {
@@ -7,7 +8,7 @@
     }
 """
 def contar_linea(nombre_archivo:str) -> int:
-    archivo = open(nombre_archivo, "r", encoding="utf8")
+    archivo:TextIO = open(nombre_archivo, "r", encoding="utf8")
     lineas:list[str] = archivo.readlines()
     archivo.close()
 
@@ -22,7 +23,7 @@ def contar_linea(nombre_archivo:str) -> int:
     }
 """
 def existe_palabra(nombre_archivo:str, palabra:str) -> bool:
-    archivo = open(nombre_archivo, "r", encoding="utf8")
+    archivo:TextIO = open(nombre_archivo, "r", encoding="utf8")
     res:bool = palabra in archivo.read()
     archivo.close()
 
@@ -38,7 +39,7 @@ def existe_palabra(nombre_archivo:str, palabra:str) -> bool:
 """
 def cantidad_de_apariciones(nombre_archivo:str, palabra_buscada:str) -> int:
     res:bool = 0
-    archivo = open(nombre_archivo, "r", encoding="utf8")
+    archivo:TextIO = open(nombre_archivo, "r", encoding="utf8")
 
     lineas:list[str] = archivo.readlines()
     archivo.close()

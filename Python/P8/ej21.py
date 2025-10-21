@@ -1,3 +1,4 @@
+from typing import TextIO
 """
 Implementar una solución para el siguiente problema.
     problema la_palabra_mas_frecuente (in nombre_archivo: seq⟨Char⟩) : seq⟨Char⟩ {
@@ -10,7 +11,7 @@ Para resolver el problema se aconseja utilizar un diccionario de palabras.
 from ej19 import cantidad_de_apariciones_lista
 
 def la_palabra_mas_frecuente(nombre_archivo:str) -> str:
-    archivo = open(nombre_archivo, "r", encoding="utf8")
+    archivo:TextIO = open(nombre_archivo, "r", encoding="utf8")
 
     lineas:list[str] = archivo.readlines()
     archivo.close()

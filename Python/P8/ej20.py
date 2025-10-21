@@ -1,3 +1,4 @@
+from typing import TextIO
 """
 Implementar una solución para el siguiente problema.
     problema agrupar_por_longitud (in nombre_archivo: seq⟨Char⟩) : Diccionario⟨Z, Z⟩ {
@@ -16,7 +17,7 @@ indica que se encontraron 2 palabras de longitud 1, 10 palabras de longitud 2 y 
 """
 def agrupar_por_longitud(nombre_archivo:str) -> dict[int, int]:
     res:dict[int, int] = {}
-    archivo = open(nombre_archivo, "r", encoding="utf8")
+    archivo:TextIO = open(nombre_archivo, "r", encoding="utf8")
 
     lineas:list[str] = archivo.readlines()
     archivo.close()

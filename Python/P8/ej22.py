@@ -1,3 +1,4 @@
+from typing import TextIO
 """
 Implementar una solución para el siguiente problema.
     problema clonar_sin_comentarios (in nombre_archivo_entrada: seq⟨Char⟩, in nombre_archivo_salida: seq⟨Char⟩) {
@@ -15,11 +16,11 @@ nombre_archivo_salida solo contendrá la última línea:
 """
 
 def clonar_sin_comentarios(nombre_archivo_entrada:str, nombre_archivo_salida:str) -> None:
-    archivo_entrada = open(nombre_archivo_entrada, "r", encoding="utf8")
+    archivo_entrada:TextIO = open(nombre_archivo_entrada, "r", encoding="utf8")
     lineas:list[str] = archivo_entrada.readlines()
     archivo_entrada.close()
 
-    archivo_salida = open(nombre_archivo_salida, "w", encoding="utf8")
+    archivo_salida:TextIO = open(nombre_archivo_salida, "w", encoding="utf8")
     archivo_salida.truncate()
     for linea in lineas:
         if primer_caracter(linea) != '#': archivo_salida.write(linea)
