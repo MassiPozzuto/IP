@@ -20,8 +20,7 @@ def clonar_sin_comentarios(nombre_archivo_entrada:str, nombre_archivo_salida:str
     lineas:list[str] = archivo_entrada.readlines()
     archivo_entrada.close()
 
-    archivo_salida:TextIO = open(nombre_archivo_salida, "w", encoding="utf8")
-    archivo_salida.truncate()
+    archivo_salida:TextIO = open(nombre_archivo_salida, "w", encoding="utf8") # "w" abre el archivo para escritura, truncando primero el fichero
     for linea in lineas:
         if primer_caracter(linea) != '#': archivo_salida.write(linea)
     
