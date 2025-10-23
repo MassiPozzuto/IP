@@ -75,7 +75,7 @@ def suma_total(lista:list[int]) -> int:
 Nota: no utilizar la función max() nativa
 """
 def maximo(lista:list[int]) -> int:
-    res:int = lista.pop(0)
+    res:int = lista[0]
     for el in lista:
         if el > res:
             res = el
@@ -90,7 +90,7 @@ def maximo(lista:list[int]) -> int:
 Nota: no utilizar la función min() nativa.
 """
 def minimo(lista:list[int]) -> int:
-    res:int = lista.pop(0)
+    res:int = lista[0]
     for el in lista:
         if el < res:
             res = el
