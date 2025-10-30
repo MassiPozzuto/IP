@@ -1,3 +1,4 @@
+from typing import Any
 """
 En el banco ExactaBank los clientes hacen cola para ser atendidos por un representante. Los clientes son representados por las tuplas (nombre, tipo afiliado) donde la primera componente es el nombre y el segundo componente es el tipo del afiliado, el cual puede ser “común” o “vip”.
     problema reordenar_cola_priorizando_vips (in filaClientes: Cola<str × str>) : Cola<str> {
@@ -23,7 +24,7 @@ def copiar_cola(cola:Cola) -> Cola:
         cola_aux.put(cola.get())
     
     while not cola_aux.empty():
-        actual:any = cola_aux.get()
+        actual:Any = cola_aux.get()
         cola.put(actual)
         cola_copia.put(actual)
     

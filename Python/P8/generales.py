@@ -1,9 +1,10 @@
 from queue import LifoQueue as Pila
 from queue import Queue as Cola
+from typing import Any
 
-def copiar_pila(pila:Pila[any]) -> Pila[any]:
-    pila_aux:Pila[any] = Pila()
-    pila_copia:Pila[any] = Pila()
+def copiar_pila(pila:Pila[Any]) -> Pila[Any]:
+    pila_aux:Pila[Any] = Pila()
+    pila_copia:Pila[Any] = Pila()
 
     while not pila.empty():
         pila_aux.put(pila.get())
@@ -15,9 +16,9 @@ def copiar_pila(pila:Pila[any]) -> Pila[any]:
 
     return pila_copia
 
-def copiar_cola(cola:Cola[any]) -> Cola[any]:
-    cola_aux:Cola[any] = Cola()
-    cola_copia:Cola[any] = Cola()
+def copiar_cola(cola:Cola[Any]) -> Cola[Any]:
+    cola_aux:Cola[Any] = Cola()
+    cola_copia:Cola[Any] = Cola()
 
     while not cola.empty():
         cola_aux.put(cola.get())
