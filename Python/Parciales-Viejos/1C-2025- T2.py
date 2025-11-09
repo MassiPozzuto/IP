@@ -37,11 +37,8 @@ def intercambiar_e_invertir_columnas(A: list[list[int]], col1: int, col2: int) -
     A_copia:list[list[int]] = deep_copy(A)
     
     for i in range(len(A)):
-        for j in range(len(A[0])):
-            if j == col1:
-                A[i][j] = A_copia[len(A)-1-i][col2]
-            elif j == col2:
-                A[i][j] = A_copia[len(A)-1-i][col1]
+        A[i][col1] = A_copia[len(A)-1-i][col2]
+        A[i][col2] = A_copia[len(A)-1-i][col1]
             
     return
 
